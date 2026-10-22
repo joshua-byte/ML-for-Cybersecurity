@@ -378,20 +378,3 @@ Anomaly-Detection-IDS/
 ```
 
 ---
-
-# Future Improvements
-
-The project can be extended with:
-
-- Real-time alert streaming
-- Dedicated threat-classification models
-- SIEM integration
-- Multi-model anomaly detection
-- Adaptive threshold tuning
-- Distributed traffic monitoring
-- ATT&CK-aligned event categorization
-- Detection-rule correlation
-- Automated reporting pipelines
-- Real-time network alert notifications
-- Signature-based detection integration
-- Hybrid behavioral + signature-based detection
