@@ -1,20 +1,44 @@
-# Network Anomaly Monitoring using ARIMA
+# Network Anomaly Monitoring Using ARIMA
 
-## Files
-- `app.py`: Streamlit interface for pre-aggregated CSV scoring and authorized live packet capture.
-- `cesnet_arima_model.pkl`: exported statsmodels ARIMA(2,0,1) artifact and experimental thresholds.
-- `requirements.txt`: Python dependencies.
+A Python-based network monitoring application that uses ARIMA time-series forecasting to detect unusual patterns in network traffic. It supports CSV-based analysis, authorized live packet capture, anomaly visualization, and HTML report generation through a Streamlit interface.
 
-## Run
-1. Put all three files in the same folder.
-2. Create/activate a virtual environment.
-3. Install dependencies: `pip install -r requirements.txt`
-4. Run: `streamlit run app.py`
+## Features
+- ARIMA(2, 0, 1) time-series forecasting.
+- Residual-based anomaly detection.
+- CSV traffic analysis and live packet capture using Scapy.
+- Traffic visualization and HTML report generation.
 
-## CSV input
-Upload one chronologically ordered row per fixed interval. The default feature is `packet_count`. The artifact was trained on one-minute packet counts from CESNET-CC25 scenario `7-u6_3`; use the same feature and interval semantics for meaningful results. Score one capture/scenario at a time.
+## Project Files
+- `app.py` — Streamlit application.
+- `arima_model.pkl` — Trained ARIMA model artifact.
+- `capture.py` — Live packet capture and traffic aggregation.
+- `report.py` — HTML report generation.
+- `requirements.txt` — Python dependencies.
+- `/training` - the dataset and training of the model.
 
-## Live capture
-Scapy capture runs on the machine hosting Streamlit, not on the user's browser machine. It requires a suitable network interface and authorized packet-capture privileges. The artifact was trained on one-minute bins; other bin sizes are for exploration only and require recalibration before meaningful use.
+## Installation & Usage
 
-.
+1. Create and activate a virtual environment.
+2. Install dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Launch the application:
+
+   ```bash
+   streamlit run app.py
+   ```
+
+## Input Requirements
+
+- Upload a chronologically ordered CSV containing one observation per fixed time interval.
+- The default feature is `packet_count`.
+- The model was trained on one-minute packet counts from the CESNET-CC25 dataset, scenario `7-u6_3`. Matching the feature and interval is recommended for meaningful results.
+
+## Live Monitoring
+
+Live packet capture runs on the machine hosting Streamlit and requires a suitable network interface and authorized capture privileges. Only monitor networks you are authorized to access.
+
+**Note:** Anomaly alerts indicate deviations from predicted traffic patterns and do not independently confirm malicious activity. Results on different traffic distributions may require model recalibration.
