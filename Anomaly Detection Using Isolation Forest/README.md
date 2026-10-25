@@ -7,7 +7,6 @@
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Machine Learning](https://img.shields.io/badge/ML-Isolation%20Forest-orange?style=for-the-badge)
 ![CICIDS2017](https://img.shields.io/badge/Dataset-CICIDS2017-purple?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
 
 </div>
 
