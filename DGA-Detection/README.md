@@ -48,11 +48,10 @@ A feature correlation matrix is also calculated to explore relationships between
 
 ### 4. Machine Learning Models
 
-Three supervised machine learning algorithms are implemented and compared:
-
-- **Logistic Regression:** A linear classification algorithm used as a baseline.
-- **Random Forest:** An ensemble learning algorithm combining multiple decision trees.
-- **Histogram-Based Gradient Boosting:** A boosting algorithm that builds an ensemble of decision trees.
+ML models chosen for comparison:
+- **Logistic Regression**
+- **Random Forest**
+- **Histogram-Based Gradient Boosting**
 
 ### 5. Model Training and Hyperparameter Tuning
 
@@ -75,21 +74,16 @@ The models are evaluated using:
 
 ## Results
 
-The following results were obtained from the 20% test split, containing 4,000 samples.
-
-DGA is treated as the positive class when calculating precision, recall and F1-score.
-
 | Model | Accuracy | DGA Precision | DGA Recall | DGA F1-score |
 |---|---:|---:|---:|---:|
 | Logistic Regression | 81.40% | 84.62% | 76.75% | 80.49% |
 | Random Forest | 83.90% | 86.26% | **80.65%** | 83.36% |
 | HistGradientBoosting | **84.23%** | **87.80%** | 79.50% | **83.44%** |
 
-HistGradientBoosting achieved the highest overall accuracy and DGA precision, while Random Forest achieved the highest DGA recall.
 
 ### Confusion Matrices
 
-The confusion matrices below show the classification performance of each model on the test set.
+The confusion matrices below show the performance of each model on the test set.
 
 **Logistic Regression**
 
