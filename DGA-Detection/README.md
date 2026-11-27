@@ -107,123 +107,19 @@ Feature scaling for Logistic Regression is incorporated into a Scikit-learn pipe
 
 The fitted classifiers are exported into a consolidated Joblib model bundle for use by the Streamlit application.
 
-## Application Features
+## Model Evaluation Results
 
-The trained models are integrated into a Streamlit-based detection interface.
+The four supervised classifiers were evaluated on a test set containing 4,000 domain samples, consisting of 2,000 benign domains and 2,000 DGA domains.
 
-### 1. Single-Domain Analysis
-
-Users can submit an individual domain for classification.
-
-The application provides:
-
-- Predicted classification.
-- DGA probability estimate.
-- Extracted lexical characteristics.
-- Model-agreement information.
-- Prediction explanations where supported.
-
-### 2. Batch Domain Detection
-
-Users can upload datasets containing multiple domains.
-
-Supported formats:
-
-- CSV files.
-- TXT files containing one domain per line.
-
-The application automatically identifies recognised domain columns in CSV files, including `domain`, `domain_name`, `host` and `hostname`.
-
-Batch inference is processed in chunks to support larger datasets.
-
-**Maximum input size:** 1,000,000 domain rows.
-
-### 3. Domain Validation
-
-Before classification, domain names undergo validation checks, including:
-
-- Empty domain detection.
-- Whitespace detection.
-- Maximum domain length.
-- DNS label length restrictions.
-- Empty label detection.
-- Invalid character detection.
-- Leading and trailing hyphen checks.
-- Internationalised domain name conversion and validation.
-
-Invalid entries are rejected separately rather than silently classified.
-
-### 4. Configurable Classification Threshold
-
-The application allows users to adjust the DGA probability threshold.
-
-The default threshold is 0.50.
-
-Changing this threshold affects the predicted classification without changing the underlying probability estimate.
-
-### 5. Evaluation Mode
-
-The application supports evaluation using labelled CSV datasets.
-
-Recognised domain columns include `domain`, `domain_name`, `host` and `hostname`.
-
-Recognised label columns include `isDGA`, `label`, `class` and `target`.
-
-The supported label conventions include:
-
-- `0`, `benign`, `legit`, `legitimate`, `normal`
-- `1`, `dga`, `malicious`, `malware`
-
-Evaluation utilities support classification metrics and confusion matrix analysis.
-
-### 6. Interactive Dashboard
-
-The application provides visual representations of detection results, including:
-
-- Prediction distribution.
-- Probability distribution.
-- Highest-scoring suspicious domains.
-- Model comparison and evaluation visualisations.
-
-### 7. Reporting and Export
-
-The application supports downloadable detection outputs.
-
-Available outputs include:
-
-- Complete classification results in CSV format.
-- Rejected domain entries in CSV format.
-- HTML detection reports containing summary statistics and domain-level results.
-
-## Initial Model Comparison
-
-The following results represent the initial experiment comparing the three handcrafted lexical-feature classifiers.
+The evaluation compares models trained using handcrafted lexical features against a character-level TF-IDF approach.
 
 | Model | Accuracy | DGA Precision | DGA Recall | DGA F1-score |
 |---|---:|---:|---:|---:|
-| Logistic Regression | 81.40% | 84.62% | 76.75% | 80.49% |
-| Random Forest | 83.90% | 86.26% | **80.65%** | 83.36% |
-| Histogram-Based Gradient Boosting | **84.23%** | **87.80%** | 79.50% | **83.44%** |
+| Logistic Regression | 81% | 81% | 81% | 81% |
+| Random Forest | 83% | 82% | 85% | 83% |
+| Histogram-Based Gradient Boosting | 83% | 81% | 86% | 83% |
+| **Character n-gram Logistic Regression** | **94%** | **94%** | **94%** | **94%** |
 
-Histogram-Based Gradient Boosting achieved the highest accuracy and DGA F1-score in this initial comparison, while Random Forest achieved the highest DGA recall.
-
-These figures describe the initial numeric-feature experiment and should not be interpreted as the evaluation results of every model currently integrated into the application.
-
-### Confusion Matrices
-
-The following confusion matrices illustrate the initial classifiers' performance on the test set.
-
-**Logistic Regression**
-
-![Logistic Regression Confusion Matrix](https://github.com/user-attachments/assets/e633faa8-2660-4a2a-aa85-0de6bd564c80)
-
-**Random Forest**
-
-![Random Forest Confusion Matrix](https://github.com/user-attachments/assets/a44f3759-b540-43b7-89d7-eb787c021b5b)
-
-**Histogram-Based Gradient Boosting**
-
-![Histogram-Based Gradient Boosting Confusion Matrix](https://github.com/user-attachments/assets/f52b2e26-eb7d-4278-9465-b094a8d42ade)
 
 ## Limitations
 
